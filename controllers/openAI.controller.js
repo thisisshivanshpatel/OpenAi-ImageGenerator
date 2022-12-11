@@ -23,9 +23,9 @@ const generateImage = async (req, res) => {
       const imageUrl = response.data.data[0].url;
 
       res.status(200).json({ success: true, data: imageUrl });
+    } else {
+      res.status(400).json({ message: "prompt and size are required" });
     }
-
-    res.status(400).json({ message: "prompt and size are required" });
   } catch (error) {
     if (error.response) {
       console.log(error.response.status);
